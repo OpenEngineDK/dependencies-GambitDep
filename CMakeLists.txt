@@ -1,6 +1,6 @@
 IF(EXISTS ${GAMBIT_DEPS_SRC_DIR})
   ADD_CUSTOM_COMMAND(
-    OUTPUT ${OE_DEPS_BUILD_DIR}/bin/gsc
+    OUTPUT ${GAMBIT_DEPS_BIN_DIR}/gsc
     COMMAND ./configure --prefix=${OE_DEPS_BUILD_DIR}/gambit --enable-cplusplus
     COMMAND make
     COMMAND make install
