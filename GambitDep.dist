@@ -1,0 +1,4 @@
+darcs /dependencies/GambitDep http://openengine.dk/code/dependencies/GambitDep
+
+any /dependencies/GambitDep http://openengine.dk/data/dependencies/gambc-v4_6_0.tgz
+any /dependencies/GambitDep http://openengine.dk/data/dependencies/MeroonV3-2008Mar01-OE.tgz

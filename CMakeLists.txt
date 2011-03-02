@@ -1,0 +1,19 @@
+IF(EXISTS ${GAMBIT_DEPS_SRC_DIR})
+  ADD_CUSTOM_COMMAND(
+    OUTPUT ${OE_DEPS_BUILD_DIR}/bin/gsc
+    COMMAND ./configure --prefix=${OE_DEPS_BUILD_DIR}/gambit --enable-cplusplus
+    COMMAND make
+    COMMAND make install
+    #DEPENDS ${OE_DEPS_BUILD_DIR}
+    WORKING_DIRECTORY ${GAMBIT_DEPS_SRC_DIR}
+  )
+  ADD_CUSTOM_TARGET(MeroonDep ALL
+    #OUTPUT ${MEROON_DEPS_LIB_DIR}/_meroon.c
+    COMMAND ./make_meroon ${GAMBIT_DEPS_BIN_DIR}/gsc
+    COMMAND mkdir -p ${MEROON_DEPS_LIB_DIR}
+    COMMAND mv _meroon.c _meroon.o1 _meroon_link.c ${MEROON_DEPS_LIB_DIR}
+    COMMAND cp ${MEROON_DEPS_SRC_DIR}/gambcext ${GAMBIT_DEPS_LIB_DIR}
+    DEPENDS ${GAMBIT_DEPS_BIN_DIR}/gsc
+    WORKING_DIRECTORY ${MEROON_DEPS_SRC_DIR}
+  )
+ENDIF(EXISTS ${GAMBIT_DEPS_SRC_DIR})
